@@ -68,9 +68,9 @@ def login(res: Response, cred: HTTPAuthorizationCredentials = Depends(HTTPBearer
         )
     return {"message": "Login success"}
 
-@app.post("/session-login")
-def session_login(cred = Depends(verify_session)):
-    return {"data": cred}
+@app.get("/user")
+def get_user(cred = Depends(verify_session)):
+    return {"user": cred}
 
 # getを定義
 @app.get("/hello")
